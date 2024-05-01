@@ -35,9 +35,8 @@ int validateIntRange(string prompt, int min, int max) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail() || num<min || num>max) {
 		cout << "Incorrect input\nPlease enter in the correct range: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 	}
 	return num;
 }
@@ -46,9 +45,9 @@ int validateInt(string prompt) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail()) {
 		cout << "ERROR TRY AGAIN: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
+	
 	}
 	return num;
 }
@@ -57,9 +56,8 @@ float validateFloat(string prompt) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail()) {
 		cout << "ERROR TRY AGAIN: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 	}
 	return num;
 }
@@ -68,9 +66,8 @@ float validateFloatRange(string prompt, int min, int max) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail() || num<min || num>max) {
 		cout << "Incorrect input\nPlease enter in the correct range: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 	}
 	return num;
 }
@@ -79,9 +76,8 @@ double validateDouble(string prompt) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail()) {
 		cout << "ERROR TRY AGAIN: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 	}
 	return num;
 }
@@ -90,9 +86,8 @@ double validateDoubleRange(string prompt, int min, int max) {
 	cout << endl << prompt;
 	while ((!(cin >> num)) || cin.fail() || num<min || num>max) {
 		cout << "Incorrect input\nPlease enter in the correct range: ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 	}
 	return num;
 }
@@ -103,9 +98,8 @@ char runAgain() {
 	again = tolower(again);
 	while (again != 'y' && again != 'n') {
 		cout << endl << "ERROR: incorrect input please enter (y/n): ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 
 	}
 	return again;
