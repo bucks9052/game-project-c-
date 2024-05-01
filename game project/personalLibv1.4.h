@@ -112,9 +112,8 @@ char runAgainB() {
 	again = tolower(again);
 	while (again != 'y' && again != 'n') {
 		cout << endl << "ERROR: incorrect input please enter (y/n): ";
-		cin.ignore();
-		cin.sync();
 		cin.clear();
+		cin.ignore();
 
 	}
 	return (again == 'y');
