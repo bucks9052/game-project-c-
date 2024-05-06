@@ -12,5 +12,10 @@ private:
 	std::string finalWord;
 public:
 	void setPlayerdata(int, int, char, char, char, char, std::string);
+	int getHealth();
+	void heal(int);
+	int getCurrency();
+	void addMoney(int);
+	void dealPlayerDamage(int);
 };
 

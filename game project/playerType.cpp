@@ -10,3 +10,23 @@ void playerType::setPlayerdata(int h, int m, char mL, char jL, char vL, char eL,
 	earthLetter = eL;
 	finalWord = final;
 }
+
+void playerType::heal(int amountHealed)
+{
+	health = health + amountHealed;
+}
+
+int playerType::getCurrency()
+{
+	return money;
+}
+
+void playerType::addMoney(int moneyGained)
+{
+
+}
+
+void playerType::dealPlayerDamage(int damageDealt)
+{
+	health = damageDealt;
+}
