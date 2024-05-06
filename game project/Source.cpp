@@ -7,11 +7,12 @@ finished with all my school work and have like 3 weeks left so i am making a gam
 int mainMenu();
 void introduction();
 struct enemey {
-	int health = 0;
-	int damage = 0;
+	int health = 100;
+	int damage = 10;
 };
 int main() {
 	introduction();
+	playerType player;
 	int choice = 0;
 
 	do {
@@ -79,7 +80,17 @@ int dealDamage(int targetHealth, int damageDealt) {
 char mars(playerType player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
-
-
+	cout << "\nYou break into the first door and there is a guard...";
+	enemey grunt;
+	while (grunt.health != 0 || player.getHealth() != 0) {
+		system("cls");
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << grunt.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		validateIntRange("\nEnter your choice: ", 1, 2);
+	}
 
 }

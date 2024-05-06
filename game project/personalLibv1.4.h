@@ -16,6 +16,7 @@ Version 1.5
 #include <exception>
 #include <stdexcept>
 #include <cctype>
+#include <cstdlib>
 using namespace std;
 
 int endProgram() {

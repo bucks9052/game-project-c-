@@ -23,7 +23,7 @@ int playerType::getCurrency()
 
 void playerType::addMoney(int moneyGained)
 {
-
+	money = money + moneyGained;
 }
 
 void playerType::dealPlayerDamage(int damageDealt)
