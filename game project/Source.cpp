@@ -1,12 +1,12 @@
 /*
-finished with all my school work and have like 3 weeks left so i am making a game
+final project MVCTC for computer coding and web applications junior year
 */
-#include "personalLibv1.4.h"
 #include "npcShop.h"
+#include "personalLibv1.4.h"
 #include "playerType.h"
 int mainMenu();
 void introduction();
-struct enemey {
+struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
 };
@@ -19,7 +19,7 @@ int main() {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
-			
+
 			break;
 		}
 		case 2: {
@@ -63,7 +63,7 @@ int mainMenu() {
 	cout << "\n5. Settings";
 	cout << "\n6. Exit";
 	choice = validateIntRange("\nEnter your choice: ", 1, 6);
-	
+
 	return choice;
 }
 void introduction() {
@@ -84,13 +84,96 @@ char mars(playerType player) {
 	enemey grunt;
 	while (grunt.health != 0 || player.getHealth() != 0) {
 		system("cls");
+		cout << "\nEnemey attacking...";
+			if (getRandom(1, 100) <= 90) {
+				cout << "\nATTACK LANDED...";
+				player.dealPlayerDamage(grunt.health);
+		}
 		cout << "\nYour health: " << player.getHealth();
 		cout << "\nEnemeys health: " << grunt.health;
 		cout << "\nYour options: ";
 		cout << "\n1. Quick attack (90% success rate)";
 		cout << "\n2. Heavy attack (70% success rate)";
 		int attackSuccess = getRandom(1, 100);
-		validateIntRange("\nEnter your choice: ", 1, 2);
-	}
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice){
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				grunt.health = grunt.health - player.getQuickDamageNumber();
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				grunt.health = grunt.health - player.getHeavyDamageNumber();
+			}
+			break;
+		}
+		
 
+		}
+	}
+	if (grunt.health == 0) {
+		cout << "\nGrunt is dead...";
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
+	cout << "\nYou contine ahead to see your bounty...";
+	cout << "\nThere is an injured dog, you could take its med kit to heal yourself or leave it...";
+	bool saveDog = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
+	cout << "\nThe boss is much stronger then the grunt...";
+	enemey boss;
+	boss.health = 200;
+	boss.damage = 20;
+	while (boss.health != 0 || player.getHealth() != 0) {
+		system("cls");
+		cout << "\nEnemey attacking...";
+		if (getRandom(1, 100) <= 90) {
+			cout << "\nATTACK LANDED...";
+			player.dealPlayerDamage(boss.health);
+		}
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << boss.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice) {
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				boss.health = boss.health - player.getQuickDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				boss.health = boss.health - player.getHeavyDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+			}
+			break;
+		}
+
+
+		}
+	}
+	if (boss.health == 0) {
+		cout << "\nBoss is dead...\nFirst puzzle piece unlocked";
+		return 'S';
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
 }

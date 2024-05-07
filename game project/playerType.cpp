@@ -11,6 +11,11 @@ void playerType::setPlayerdata(int h, int m, char mL, char jL, char vL, char eL,
 	finalWord = final;
 }
 
+int playerType::getHealth()
+{
+	return health;
+}
+
 void playerType::heal(int amountHealed)
 {
 	health = health + amountHealed;
@@ -29,4 +34,14 @@ void playerType::addMoney(int moneyGained)
 void playerType::dealPlayerDamage(int damageDealt)
 {
 	health = damageDealt;
+}
+
+int playerType::getQuickDamageNumber()
+{
+	return quickDamage;
+}
+
+int playerType::getHeavyDamageNumber()
+{
+	return heavyDamage;
 }
