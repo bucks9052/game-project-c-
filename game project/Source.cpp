@@ -91,8 +91,8 @@ char mars(playerType player) {
 	cout << "\nYou break into the first door and there is a guard...";
 	Sleep(8000);
 	enemey grunt;
-	while (grunt.health > 0 || player.getHealth() > 0) {
-		if (grunt.health < 0|| player.getHealth() < 0) {
+	while (grunt.health >= 0 || player.getHealth() >= 0) {
+		if (grunt.health <= 0|| player.getHealth() <= 0) {
 			break;
 		}
 		system("cls");
@@ -114,6 +114,7 @@ char mars(playerType player) {
 		case 1: {
 			if (attackSuccess <= 90) {
 				cout << "\nATTACK LANDED....";
+				Sleep(1000);
 				grunt.health = grunt.health - player.getQuickDamageNumber();
 			}
 			break;
@@ -121,6 +122,7 @@ char mars(playerType player) {
 		case 2: {
 			if (attackSuccess <= 70) {
 				cout << "\nATTACK LANDED....";
+				Sleep(1000);
 				grunt.health = grunt.health - player.getHeavyDamageNumber();
 			}
 			break;
@@ -136,6 +138,7 @@ char mars(playerType player) {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
 		return ' ';
 	}
+	
 	cout << "\nYou contine ahead to see your bounty...";
 	cout << "\nThere is an injured dog, you could take its med kit to heal yourself or leave it...";
 	bool saveDog = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
@@ -143,14 +146,16 @@ char mars(playerType player) {
 	enemey boss;
 	boss.health = 200;
 	boss.damage = 20;
-	while (boss.health <= 0 || player.getHealth() <= 0) {
+	while (boss.health > 0 || player.getHealth() > 0) {
 		if (boss.health < 0 || player.getHealth() < 0) {
 			break;
 		}
 		system("cls");
 		cout << "\nEnemey attacking...";
+		Sleep(1000);
 		if (getRandom(1, 100) <= 90) {
 			cout << "\nATTACK LANDED...";
+			Sleep(1000);
 			player.dealPlayerDamage(boss.damage);
 		}
 		cout << "\nYour health: " << player.getHealth();
@@ -164,33 +169,162 @@ char mars(playerType player) {
 		case 1: {
 			if (attackSuccess <= 90) {
 				cout << "\nATTACK LANDED....";
+				Sleep(1000);
 				boss.health = boss.health - player.getQuickDamageNumber();
 			}
 			else {
 				cout << "\nATTACK MISSED...";
+				Sleep(1000);
 			}
 			break;
 		}
 		case 2: {
 			if (attackSuccess <= 70) {
 				cout << "\nATTACK LANDED....";
+				Sleep(1000);
 				boss.health = boss.health - player.getHeavyDamageNumber();
 			}
 			else {
 				cout << "\nATTACK MISSED...";
+				Sleep(1000);
 			}
 			break;
 		}
 		}
 		if (saveDog == 1) {
 			cout << "\nDOG DOES 50 DAMAGE....";
+			Sleep(1000);
 			boss.health = boss.health - 50;
 			saveDog = 0;
 		}
 	}
 	if (boss.health <= 0) {
-		cout << "\nBoss is dead...\nFirst puzzle piece unlocked\n 500$ added to your account...";
+		cout << "\nBoss is dead...\nFirst puzzle piece unlocked\n500$ added to your account...";
+		player.addMoney(500);
 		return 'M';
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
+}
+char venus(playerType player) {
+	cout << "\nYou landed safely and exit your ship...";
+	cout << "\nA compound lays ahead which holds the bounty your after...";
+	cout << "\nYou break into the first door and there is a huge guard, he is weaker then the last one but much harder to take down...";
+	Sleep(8000);
+	enemey grunt;
+	grunt.health = 150;
+	while (grunt.health >= 0 || player.getHealth() >= 0) {
+		if (grunt.health <= 0 || player.getHealth() <= 0) {
+			break;
+		}
+		system("cls");
+		cout << "\nEnemey attacking...";
+		Sleep(1000);
+		if (getRandom(1, 100) <= 90) {
+			cout << "\nATTACK LANDED...";
+			player.dealPlayerDamage(grunt.damage);
+			Sleep(1000);
+		}
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << grunt.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice) {
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				grunt.health = grunt.health - player.getQuickDamageNumber();
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				grunt.health = grunt.health - player.getHeavyDamageNumber();
+			}
+			break;
+		}
+
+
+		}
+	}
+	if (grunt.health <= 0) {
+		cout << "\nGrunt is dead...";
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
+
+	cout << "\nYou contine ahead to see your bounty...";
+	cout << "\nThere is an injured dog, you could take its med kit to heal yourself or leave it...";
+	bool saveDog = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
+	cout << "\nThis boss is much stronger then then the huge bodyguard...";
+	enemey boss;
+	boss.health = 300;
+	boss.damage = 15;
+	while (boss.health > 0 || player.getHealth() > 0) {
+		if (boss.health < 0 || player.getHealth() < 0) {
+			break;
+		}
+		system("cls");
+		cout << "\nEnemey attacking...";
+		Sleep(1000);
+		if (getRandom(1, 100) <= 90) {
+			cout << "\nATTACK LANDED...";
+			Sleep(1000);
+			player.dealPlayerDamage(boss.damage);
+		}
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << boss.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice) {
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				boss.health = boss.health - player.getQuickDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+				Sleep(1000);
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				boss.health = boss.health - player.getHeavyDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+				Sleep(1000);
+			}
+			break;
+		}
+		}
+		if (saveDog == 1) {
+			cout << "\nDOG DOES 50 DAMAGE....";
+			Sleep(1000);
+			boss.health = boss.health - 50;
+			saveDog = 0;
+		}
+	}
+	if (boss.health <= 0) {
+		cout << "\nBoss is dead...\Second puzzle piece unlocked\n500$ added to your account...";
+		return 'O';
 	}
 	else {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
