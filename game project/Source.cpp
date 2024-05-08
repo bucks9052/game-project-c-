@@ -6,6 +6,7 @@ final project MVCTC for computer coding and web applications junior year
 #include "playerType.h"
 int mainMenu();
 void introduction();
+char mars(playerType player);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -14,12 +15,25 @@ int main() {
 	introduction();
 	playerType player;
 	int choice = 0;
-
+	char marsLetter = ' ';
+	char venusLetter = ' ';
+	char earthLetter = ' ';
+	char saturnLetter = ' ';
 	do {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
-
+			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)", 1, 5);
+			switch (planetChoice) {
+			case 1: {
+				system("cls");
+				cout << "Flying to mars...";
+				Sleep(2000);
+				marsLetter = mars(player);
+			}
+				  
+			}
+			
 			break;
 		}
 		case 2: {
@@ -70,24 +84,24 @@ void introduction() {
 	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \nHe is a bounty hunter.";
 	cout << "\nSpike navigates his ship, the Bebop, through the highways of our solar system in an effort to chase bounty's to finally find the big bounty.";
 }
-int dealDamage(int targetHealth, int damageDealt) {
-	int health = targetHealth - damageDealt;
-	if (health == 0) {
-		cout << "\nYOU DIED....";
-	}
-	return health;
-}
+
 char mars(playerType player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
 	cout << "\nYou break into the first door and there is a guard...";
+	Sleep(8000);
 	enemey grunt;
-	while (grunt.health != 0 || player.getHealth() != 0) {
+	while (grunt.health > 0 || player.getHealth() > 0) {
+		if (grunt.health < 0|| player.getHealth() < 0) {
+			break;
+		}
 		system("cls");
 		cout << "\nEnemey attacking...";
-			if (getRandom(1, 100) <= 90) {
-				cout << "\nATTACK LANDED...";
-				player.dealPlayerDamage(grunt.health);
+		Sleep(1000);
+		if (getRandom(1, 100) <= 90) {
+			cout << "\nATTACK LANDED...";
+			player.dealPlayerDamage(grunt.damage);
+			Sleep(1000);
 		}
 		cout << "\nYour health: " << player.getHealth();
 		cout << "\nEnemeys health: " << grunt.health;
@@ -96,7 +110,7 @@ char mars(playerType player) {
 		cout << "\n2. Heavy attack (70% success rate)";
 		int attackSuccess = getRandom(1, 100);
 		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
-		switch (choice){
+		switch (choice) {
 		case 1: {
 			if (attackSuccess <= 90) {
 				cout << "\nATTACK LANDED....";
@@ -111,11 +125,11 @@ char mars(playerType player) {
 			}
 			break;
 		}
-		
+
 
 		}
 	}
-	if (grunt.health == 0) {
+	if (grunt.health <= 0) {
 		cout << "\nGrunt is dead...";
 	}
 	else {
@@ -129,12 +143,15 @@ char mars(playerType player) {
 	enemey boss;
 	boss.health = 200;
 	boss.damage = 20;
-	while (boss.health != 0 || player.getHealth() != 0) {
+	while (boss.health <= 0 || player.getHealth() <= 0) {
+		if (boss.health < 0 || player.getHealth() < 0) {
+			break;
+		}
 		system("cls");
 		cout << "\nEnemey attacking...";
 		if (getRandom(1, 100) <= 90) {
 			cout << "\nATTACK LANDED...";
-			player.dealPlayerDamage(boss.health);
+			player.dealPlayerDamage(boss.damage);
 		}
 		cout << "\nYour health: " << player.getHealth();
 		cout << "\nEnemeys health: " << boss.health;
@@ -164,13 +181,16 @@ char mars(playerType player) {
 			}
 			break;
 		}
-
-
+		}
+		if (saveDog == 1) {
+			cout << "\nDOG DOES 50 DAMAGE....";
+			boss.health = boss.health - 50;
+			saveDog = 0;
 		}
 	}
-	if (boss.health == 0) {
-		cout << "\nBoss is dead...\nFirst puzzle piece unlocked";
-		return 'S';
+	if (boss.health <= 0) {
+		cout << "\nBoss is dead...\nFirst puzzle piece unlocked\n 500$ added to your account...";
+		return 'M';
 	}
 	else {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";

@@ -33,7 +33,7 @@ void playerType::addMoney(int moneyGained)
 
 void playerType::dealPlayerDamage(int damageDealt)
 {
-	health = damageDealt;
+	health = health - damageDealt;
 }
 
 int playerType::getQuickDamageNumber()
