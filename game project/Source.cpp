@@ -1,12 +1,12 @@
 /*
 final project MVCTC for computer coding and web applications junior year
 */
-#include "npcShop.h"
 #include "personalLibv1.4.h"
 #include "playerType.h"
 int mainMenu();
 void introduction();
-char mars(playerType player);
+char mars(playerType& player);
+char venus(playerType& player);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -23,7 +23,7 @@ int main() {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
-			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)", 1, 5);
+			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)\nEnter your chocie: ", 1, 5);
 			switch (planetChoice) {
 			case 1: {
 				system("cls");
@@ -31,7 +31,12 @@ int main() {
 				Sleep(2000);
 				marsLetter = mars(player);
 			}
-				  
+			case 2: {
+				system("cls");
+				cout << "Flying to venus...";
+				Sleep(2000);
+				venusLetter = venus(player);
+			}
 			}
 			
 			break;
@@ -81,11 +86,11 @@ int mainMenu() {
 	return choice;
 }
 void introduction() {
-	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \nHe is a bounty hunter.";
-	cout << "\nSpike navigates his ship, the Bebop, through the highways of our solar system in an effort to chase bounty's to finally find the big bounty.";
+	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \na bounty hunter.";
+	cout << "\nflying through our solar system in an effort to chase bounty's to finally find the big bounty.";
 }
 
-char mars(playerType player) {
+char mars(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
 	cout << "\nYou break into the first door and there is a guard...";
@@ -208,7 +213,7 @@ char mars(playerType player) {
 		return ' ';
 	}
 }
-char venus(playerType player) {
+char venus(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
 	cout << "\nYou break into the first door and there is a huge guard, he is weaker then the last one but much harder to take down...";
@@ -323,7 +328,8 @@ char venus(playerType player) {
 		}
 	}
 	if (boss.health <= 0) {
-		cout << "\nBoss is dead...\Second puzzle piece unlocked\n500$ added to your account...";
+		cout << "\nBoss is dead...\Second puzzle piece unlocked\n1000$ added to your account...";
+		player.addMoney(1000);
 		return 'O';
 	}
 	else {
