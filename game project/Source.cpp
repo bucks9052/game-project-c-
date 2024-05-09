@@ -8,6 +8,8 @@ void introduction();
 char earth(playerType&);
 char mars(playerType&);
 char venus(playerType&);
+char saturn(playerType&);
+char moon(playerType&);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -152,6 +154,9 @@ char mars(playerType& player) {
 	cout << "\nYou contine ahead to see your bounty...";
 	cout << "\nThere is an injured dog, you could take its med kit to heal yourself or leave it...";
 	bool saveDog = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
+	if (saveDog == 0) {
+		player.heal(50);
+	}
 	cout << "\nThe boss is much stronger then the grunt...";
 	enemey boss;
 	boss.health = 200;
@@ -279,6 +284,9 @@ char venus(playerType& player) {
 	cout << "\nYou contine ahead to see your bounty...";
 	cout << "\nThere is an injured bear, you could take its med kit to heal yourself or leave it...";
 	bool saveBear = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
+	if (saveBear == 0) {
+		player.heal(50);
+	}
 	cout << "\nThis boss is much stronger then then the huge bodyguard...";
 	enemey boss;
 	boss.health = 300;
@@ -349,6 +357,145 @@ char venus(playerType& player) {
 	}
 }
 char earth(playerType& player) {
+	cout << "\nYou landed safely and exit your ship...";
+	cout << "\nA fortress lays ahead which holds the bounty your after...";
+	cout << "\nYou break into the first door and there is a bear, he is strong but struggles to land attacks...";
+	Sleep(8000);
+	enemey grunt;
+	grunt.health = 200;
+	grunt.damage = 25;
+	while (grunt.health >= 0 || player.getHealth() >= 0) {
+		if (grunt.health <= 0 || player.getHealth() <= 0) {
+			break;
+		}
+		system("cls");
+		cout << "\nEnemey attacking...";
+		Sleep(1000);
+		if (getRandom(1, 100) <= 30) {
+			cout << "\nATTACK LANDED...";
+			player.dealPlayerDamage(grunt.damage);
+			Sleep(1000);
+		}
+		else {
+			cout << "\nENEMEY ATTACK MISSED...";
+		}
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << grunt.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice) {
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				grunt.health = grunt.health - player.getQuickDamageNumber();
+			}
+			else {
+				cout << "\nYOUR ATTACK MISSED...";
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				grunt.health = grunt.health - player.getHeavyDamageNumber();
+			}
+			else {
+				cout << "\nYOUR ATTACK MISSED...";
+			}
+			break;
+		}
+
+
+		}
+	}
+	if (grunt.health <= 0) {
+		cout << "\nBear is dead...";
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
+
+	cout << "\nYou contine ahead to see your bounty...";
+	cout << "\nThere is an injured dog, you could take its med kit to heal yourself or leave it...";
+	bool saveDog = static_cast<bool>(validateIntRange("\nEnter 1 to save it or 0 to take the 50 health for yourself...", 0, 1));
+	if (saveDog == 0) {
+		player.heal(50);
+	}
+	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
+	enemey boss;
+	boss.health = 250;
+	boss.damage = 35;
+	while (boss.health > 0 || player.getHealth() > 0) {
+
+		system("cls");
+		cout << "\nEnemey attacking...";
+		Sleep(1000);
+		if (getRandom(1, 100) <= 90) {
+			cout << "\nATTACK LANDED...";
+			Sleep(1000);
+			player.dealPlayerDamage(boss.damage);
+		}
+		if (boss.health < 0 || player.getHealth() < 0) {
+			break;
+		}
+		cout << "\nYour health: " << player.getHealth();
+		cout << "\nEnemeys health: " << boss.health;
+		cout << "\nYour options: ";
+		cout << "\n1. Quick attack (90% success rate)";
+		cout << "\n2. Heavy attack (70% success rate)";
+		int attackSuccess = getRandom(1, 100);
+		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
+		switch (choice) {
+		case 1: {
+			if (attackSuccess <= 90) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				boss.health = boss.health - player.getQuickDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+				Sleep(1000);
+			}
+			break;
+		}
+		case 2: {
+			if (attackSuccess <= 70) {
+				cout << "\nATTACK LANDED....";
+				Sleep(1000);
+				boss.health = boss.health - player.getHeavyDamageNumber();
+			}
+			else {
+				cout << "\nATTACK MISSED...";
+				Sleep(1000);
+			}
+			break;
+		}
+		}
+		if (saveDog == 1) {
+			cout << "\nROBO DOG DOES 100 DAMAGE....";
+			Sleep(1000);
+			boss.health = boss.health - 100;
+			saveDog = 0;
+		}
+
+	}
+	if (boss.health <= 0) {
+		cout << "\nBoss is dead...\nThird puzzle piece unlocked\n2000$ added to your account...";
+		player.addMoney(2000);
+		return 'O';
+	}
+	else {
+		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
+		return ' ';
+	}
+}
+char saturn(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA fortress lays ahead which holds the bounty your after...";
 	cout << "\nYou break into the first door and there is a bear, he is strong but struggles to land attacks...";
