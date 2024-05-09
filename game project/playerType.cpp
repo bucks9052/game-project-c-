@@ -45,3 +45,7 @@ int playerType::getHeavyDamageNumber()
 {
 	return heavyDamage;
 }
+void playerType::removeMoney(int cost)
+{
+	money = money + cost;
+}

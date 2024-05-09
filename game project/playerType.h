@@ -21,5 +21,6 @@ public:
 	void dealPlayerDamage(int);
 	int getQuickDamageNumber();
 	int getHeavyDamageNumber();
+	void removeMoney(int);
 };
 
