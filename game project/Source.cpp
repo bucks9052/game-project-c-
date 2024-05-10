@@ -3,6 +3,8 @@ final project MVCTC for computer coding and web applications junior year
 */
 #include "personalLibv1.4.h"
 #include "playerType.h"
+#include "specialEnemey.h"
+#include "specialBoss.h"
 int mainMenu();
 void introduction();
 char earth(playerType&);
@@ -639,11 +641,9 @@ char moon(playerType& player) {
 	cout << "\nA moon base lays ahead which holds the final bounty your after...";
 	cout << "\nYou break into the first door and there is a special enemey who can do crit damage, he is strong...";
 	Sleep(8000);
-	enemey grunt;
-	grunt.health = 200;
-	grunt.damage = 25;
-	while (grunt.health >= 0 || player.getHealth() >= 0) {
-		if (grunt.health <= 0 || player.getHealth() <= 0) {
+	specialEnemey grunt;
+	while (grunt.getHealth() >= 0 || player.getHealth() >= 0) {
+		if (grunt.getHealth() <= 0 || player.getHealth() <= 0) {
 			break;
 		}
 		system("cls");
@@ -651,14 +651,14 @@ char moon(playerType& player) {
 		Sleep(1000);
 		if (getRandom(1, 100) <= 30) {
 			cout << "\nATTACK LANDED...";
-			player.dealPlayerDamage(grunt.damage);
+			player.dealPlayerDamage(grunt.getDamage());
 			Sleep(1000);
 		}
 		else {
 			cout << "\nENEMEY ATTACK MISSED...";
 		}
 		cout << "\nYour health: " << player.getHealth();
-		cout << "\nEnemeys health: " << grunt.health;
+		cout << "\nEnemeys health: " << grunt.getHealth();
 		cout << "\nYour options: ";
 		cout << "\n1. Quick attack (90% success rate)";
 		cout << "\n2. Heavy attack (70% success rate)";
@@ -669,7 +669,7 @@ char moon(playerType& player) {
 			if (attackSuccess <= 90) {
 				cout << "\nATTACK LANDED....";
 				Sleep(1000);
-				grunt.health = grunt.health - player.getQuickDamageNumber();
+				grunt.dealDamage(player.getQuickDamageNumber())
 			}
 			else {
 				cout << "\nYOUR ATTACK MISSED...";
@@ -680,7 +680,7 @@ char moon(playerType& player) {
 			if (attackSuccess <= 70) {
 				cout << "\nATTACK LANDED....";
 				Sleep(1000);
-				grunt.health = grunt.health - player.getHeavyDamageNumber();
+				grunt.dealDamage(player.getHeavyDamageNumber());
 			}
 			else {
 				cout << "\nYOUR ATTACK MISSED...";

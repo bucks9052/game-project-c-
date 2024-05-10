@@ -12,5 +12,6 @@ public:
 	int getcritDamage();
 	int getHealth();
 	int getDamage();
+	void dealDamage(int);
 };
 

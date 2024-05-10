@@ -19,3 +19,8 @@ int specialEnemey::getDamage()
 {
 	return damage;
 }
+
+void specialEnemey::dealDamage(int damageDealt)
+{
+	health = health - damageDealt;
+}
