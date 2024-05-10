@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -129,10 +129,14 @@
   <ItemGroup>
     <ClCompile Include="playerType.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="specialBoss.cpp" />
+    <ClCompile Include="specialEnemey.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="personalLibv1.4.h" />
     <ClInclude Include="playerType.h" />
+    <ClInclude Include="specialBoss.h" />
+    <ClInclude Include="specialEnemey.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
