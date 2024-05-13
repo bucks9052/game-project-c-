@@ -3,7 +3,7 @@
 class playerType
 {
 private:
-	int health = 100;
+	int health = 100;		//player values
 	int money = 0;
 	int quickDamage = 50;
 	int heavyDamage = 90;
@@ -13,7 +13,7 @@ private:
 	char earthLetter = ' ';
 	std::string finalWord;
 public:
-	void setPlayerdata(int, int, char, char, char, char, std::string);
+	void setPlayerdata(int, int, char, char, char, char, std::string);		//all player related functions, more info in implementation
 	int getHealth();
 	void heal(int);
 	int getCurrency();
@@ -22,5 +22,9 @@ public:
 	int getQuickDamageNumber();
 	int getHeavyDamageNumber();
 	void removeMoney(int);
+	void saveGame(const std::string&);
+	void loadGame(const std::string&);
+	void setKeyWord();
+	std::string getKeyWord();
 };
 

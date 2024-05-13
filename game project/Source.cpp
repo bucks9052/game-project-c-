@@ -1,5 +1,7 @@
 /*
 final project MVCTC for computer coding and web applications junior year
+most of the documentation for the code for the missions is in the mars as I am on a time crunch and do not want to spend 45 minutes commeneting everything 
+all thats different is the wording in the output and health of enemeys, moon is differenet there will be documentation there tho
 */
 #include "personalLibv1.4.h"
 #include "playerType.h"
@@ -30,7 +32,7 @@ int main() {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
-			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)\nEnter your chocie: ", 1, 5);		//
+			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)\nEnter your chocie: ", 1, 5);		//sub menu for planets
 			switch (planetChoice) {
 			case 1: {
 				system("cls");
@@ -48,8 +50,29 @@ int main() {
 				system("cls");
 				cout << "Flying to earth...";
 				Sleep(2000);
-				venusLetter = earth(player);
+				earthLetter = earth(player);
 			}
+			case 4: {
+				system("cls");
+				cout << "Flying to saturn...";
+				Sleep(2000);
+				saturnLetter = earth(player);
+			}
+			case 5: {
+				system("cls");
+				cout << "Flying to the moon...";
+				Sleep(2000);
+				if (marsLetter == 'M' && venusLetter == 'O' && earthLetter == 'O' && saturnLetter == 'N'){
+
+				}
+				if (player.getKeyWord() == "MOON") {
+					moon(player);
+
+				}	
+		
+				
+				}
+
 			}
 			
 			break;
@@ -96,30 +119,30 @@ int mainMenu() {
 	choice = validateIntRange("\nEnter your choice: ", 1, 6);
 
 	return choice;
-}
+}		//main menu system
 void introduction() {
 	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \na bounty hunter.";
 	cout << "\nflying through our solar system in an effort to chase bounty's to finally find the big bounty.";
-}
+}		//intro to game
 char mars(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
-	cout << "\nA compound lays ahead which holds the bounty your after...";
+	cout << "\nA compound lays ahead which holds the bounty your after...";				//intro to mars
 	cout << "\nYou break into the first door and there is a guard...";
 	Sleep(8000);
 	enemey grunt;
 	while (grunt.health >= 0 || player.getHealth() >= 0) {
-		if (grunt.health <= 0|| player.getHealth() <= 0) {
+		if (grunt.health <= 0|| player.getHealth() <= 0) {			//grunt attack, sort of tutorial
 			break;
 		}
 		system("cls");
 		cout << "\nEnemey attacking...";
 		Sleep(1000);
-		if (getRandom(1, 100) <= 90) {
+		if (getRandom(1, 100) <= 90) {				//attack system used random gened numbers to figure out probability of hitting, used in all attacks
 			cout << "\nATTACK LANDED...";
 			player.dealPlayerDamage(grunt.damage);
 			Sleep(1000);
 		}
-		cout << "\nYour health: " << player.getHealth();
+		cout << "\nYour health: " << player.getHealth();			//display for 
 		cout << "\nEnemeys health: " << grunt.health;
 		cout << "\nYour options: ";
 		cout << "\n1. Quick attack (90% success rate)";
@@ -229,7 +252,7 @@ char mars(playerType& player) {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
 		return ' ';
 	}
-}
+}			//mars mission
 char venus(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
