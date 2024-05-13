@@ -12,6 +12,8 @@ char mars(playerType&);
 char venus(playerType&);
 char saturn(playerType&);
 char moon(playerType&);
+void saveGame(playerType&);
+void loadGame(playerType&);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -712,13 +714,6 @@ char moon(playerType& player) {
 	}
 	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
 	specialBoss boss;
-
-
-
-
-
-
-
 	while (boss.getHealth() > 0 || player.getHealth() > 0) {
 
 		system("cls");
@@ -791,3 +786,9 @@ char moon(playerType& player) {
 		return ' ';
 	}
 }	
+void saveGame(playerType& player) {
+
+}
+void loadGame(playerType& player) {
+
+}
