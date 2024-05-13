@@ -13,7 +13,7 @@ char earth(playerType&);
 char mars(playerType&);
 char venus(playerType&);
 char saturn(playerType&);
-char moon(playerType&);
+void moon(playerType&);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -81,11 +81,11 @@ int main() {
 			break;
 		}
 		case 3: {
-			player.saveGame();
+			player.saveGame();				//save system in a binary file
 			break;
 		}
 		case 4: {
-			player.loadGame();
+			player.loadGame();				//load system in a binary file
 			break;
 		}
 		case 5: {
@@ -180,6 +180,7 @@ char mars(playerType& player) {
 	if (saveDog == 0) {
 		player.heal(50);
 	}
+	player.saveGame();
 	cout << "\nThe boss is much stronger then the grunt...";
 	enemey boss;
 	boss.health = 200;
@@ -242,6 +243,7 @@ char mars(playerType& player) {
 	if (boss.health <= 0) {
 		cout << "\nBoss is dead...\nFirst puzzle piece unlocked\n500$ added to your account...";
 		player.addMoney(500);
+		player.saveGame();
 		return 'M';
 	}
 	else {
@@ -310,6 +312,7 @@ char venus(playerType& player) {
 	if (saveBear == 0) {
 		player.heal(50);
 	}
+	player.saveGame();
 	cout << "\nThis boss is much stronger then then the huge bodyguard...";
 	enemey boss;
 	boss.health = 300;
@@ -372,6 +375,7 @@ char venus(playerType& player) {
 	if (boss.health <= 0) {
 		cout << "\nBoss is dead...\Second puzzle piece unlocked\n1000$ added to your account...";
 		player.addMoney(1000);
+		player.saveGame();
 		return 'O';
 	}
 	else {
@@ -450,6 +454,7 @@ char earth(playerType& player) {
 	if (saveDog == 0) {
 		player.heal(50);
 	}
+	player.saveGame();
 	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
 	enemey boss;
 	boss.health = 250;
@@ -511,6 +516,7 @@ char earth(playerType& player) {
 	if (boss.health <= 0) {
 		cout << "\nBoss is dead...\nThird puzzle piece unlocked\n2000$ added to your account...";
 		player.addMoney(2000);
+		player.saveGame();
 		return 'O';
 	}
 	else {
@@ -589,6 +595,7 @@ char saturn(playerType& player) {
 	if (saveDog == 0) {
 		player.heal(50);
 	}
+	player.saveGame();
 	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
 	enemey boss;
 	boss.health = 250;
@@ -650,6 +657,7 @@ char saturn(playerType& player) {
 	if (boss.health <= 0) {
 		cout << "\nBoss is dead...\nThird puzzle piece unlocked\n2000$ added to your account...";
 		player.addMoney(2000);
+		player.saveGame();
 		return 'N';
 	}
 	else {
@@ -657,7 +665,8 @@ char saturn(playerType& player) {
 		return ' ';
 	}
 }
-char moon(playerType& player) {
+void moon(playerType& player) {
+	player.saveGame();
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA moon base is ahead...";
 	cout << "\nYou break into the first door and there is a special enemey who can do crit damage, he is strong...";
@@ -722,7 +731,7 @@ char moon(playerType& player) {
 	}
 	else {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
-		return ' ';
+	
 	}
 
 	cout << "\nYou contine ahead to see your bounty...";
@@ -731,6 +740,7 @@ char moon(playerType& player) {
 	if (saveDog == 0) {
 		player.heal(100);
 	}
+	player.saveGame();
 	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
 	specialBoss boss;
 	while (boss.getHealth() > 0 || player.getHealth() > 0) {
@@ -796,12 +806,14 @@ char moon(playerType& player) {
 
 	}
 	if (boss.getHealth() <= 0) {
-		cout << "\nBoss is dead...\nThird puzzle piece unlocked\n2000$ added to your account...";
-		player.addMoney(2000);
-		return 'O';
+		cout << "\nBoss is dead...\nFinal Mission completed...\n20000$ added to your account...";
+		player.addMoney(20000);
+		player.saveGame();
+	
 	}
 	else {
 		cout << "\nYOU DIED...\nMISSION FAILED...\nEXITING MISSION";
-		return ' ';
+	
 	}
 }	
+
