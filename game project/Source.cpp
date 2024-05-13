@@ -14,8 +14,6 @@ char mars(playerType&);
 char venus(playerType&);
 char saturn(playerType&);
 char moon(playerType&);
-void saveGame(playerType&);
-void loadGame(playerType&);
 struct enemey {				//structure to create enemeys easily
 	int health = 100;
 	int damage = 10;
@@ -32,7 +30,7 @@ int main() {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
-			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...)\nEnter your chocie: ", 1, 5);		//sub menu for planets
+			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...\n6. Exit...)\nEnter your chocie: ", 1, 6);		//sub menu for planets
 			switch (planetChoice) {
 			case 1: {
 				system("cls");
@@ -69,10 +67,10 @@ int main() {
 					moon(player);
 
 				}	
-		
-				
 				}
-
+			case 6: {
+				cout << "\nExiting...";
+			}
 			}
 			
 			break;
@@ -142,7 +140,7 @@ char mars(playerType& player) {
 			player.dealPlayerDamage(grunt.damage);
 			Sleep(1000);
 		}
-		cout << "\nYour health: " << player.getHealth();			//display for 
+		cout << "\nYour health: " << player.getHealth();			
 		cout << "\nEnemeys health: " << grunt.health;
 		cout << "\nYour options: ";
 		cout << "\n1. Quick attack (90% success rate)";
@@ -151,7 +149,7 @@ char mars(playerType& player) {
 		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
 		switch (choice) {
 		case 1: {
-			if (attackSuccess <= 90) {
+			if (attackSuccess <= 90) {					
 				cout << "\nATTACK LANDED....";
 				Sleep(1000);
 				grunt.health = grunt.health - player.getQuickDamageNumber();
@@ -809,9 +807,3 @@ char moon(playerType& player) {
 		return ' ';
 	}
 }	
-void saveGame(playerType& player) {
-
-}
-void loadGame(playerType& player) {
-
-}
