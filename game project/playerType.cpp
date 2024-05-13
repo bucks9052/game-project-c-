@@ -50,9 +50,10 @@ void playerType::removeMoney(int cost)                  //remove money
 {
 	money = money - cost;
 }
-void playerType::saveGame(const std::string& filename)                  //binary file system for save games i think works well needs tested more
+void playerType::saveGame()                  //binary file system for save games i think works well needs tested more
 {
-    std::ofstream file(filename, std::ios::out | std::ios::binary);
+    std::string save = "save.dat";
+    std::ofstream file(save, std::ios::out | std::ios::binary);
     if (file.is_open())
     {
         // Write player data to the file
@@ -67,14 +68,15 @@ void playerType::saveGame(const std::string& filename)                  //binary
     }
     else
     {
-        std::cerr << "Error: Unable to save game data to file " << filename << std::endl;
+        std::cerr << "Error: Unable to save game data to file " << save << std::endl;
     }
 }
 
 // Load game function
-void playerType::loadGame(const std::string& filename)
+void playerType::loadGame()
 {
-    std::ifstream file(filename, std::ios::in | std::ios::binary);
+    std::string save = "save.dat";
+    std::ifstream file(save, std::ios::in | std::ios::binary);
     if (file.is_open())
     {
         // Read player data from the file
@@ -92,7 +94,7 @@ void playerType::loadGame(const std::string& filename)
     }
     else
     {
-        std::cerr << "Error: Unable to load game data from file " << filename << std::endl;
+        std::cerr << "Error: Unable to load game data from file " << save << std::endl;
     }
 }
 void playerType::setKeyWord() {

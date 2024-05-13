@@ -22,8 +22,8 @@ public:
 	int getQuickDamageNumber();
 	int getHeavyDamageNumber();
 	void removeMoney(int);
-	void saveGame(const std::string&);
-	void loadGame(const std::string&);
+	void saveGame();
+	void loadGame();
 	void setKeyWord();
 	std::string getKeyWord();
 };

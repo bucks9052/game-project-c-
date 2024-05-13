@@ -81,17 +81,15 @@ int main() {
 			break;
 		}
 		case 3: {
-
+			player.saveGame();
 			break;
 		}
 		case 4: {
-
-
-
+			player.loadGame();
 			break;
 		}
 		case 5: {
-			cout << "WORK IN PROGRESS...";
+			cout << "\nWORK IN PROGRESS...";
 			break;
 		}
 		case 6: {
@@ -140,7 +138,7 @@ char mars(playerType& player) {
 			player.dealPlayerDamage(grunt.damage);
 			Sleep(1000);
 		}
-		cout << "\nYour health: " << player.getHealth();			
+		cout << "\nYour health: " << player.getHealth();			//battle info
 		cout << "\nEnemeys health: " << grunt.health;
 		cout << "\nYour options: ";
 		cout << "\n1. Quick attack (90% success rate)";
@@ -149,7 +147,7 @@ char mars(playerType& player) {
 		int choice = validateIntRange("\nEnter your choice: ", 1, 2);
 		switch (choice) {
 		case 1: {
-			if (attackSuccess <= 90) {					
+			if (attackSuccess <= 90) {							//switch to do attacking
 				cout << "\nATTACK LANDED....";
 				Sleep(1000);
 				grunt.health = grunt.health - player.getQuickDamageNumber();
@@ -157,7 +155,7 @@ char mars(playerType& player) {
 			break;
 		}
 		case 2: {
-			if (attackSuccess <= 70) {
+			if (attackSuccess <= 70) {				//heavy attack info
 				cout << "\nATTACK LANDED....";
 				Sleep(1000);
 				grunt.health = grunt.health - player.getHeavyDamageNumber();
@@ -250,7 +248,7 @@ char mars(playerType& player) {
 		cout << "\nYOU DIED...\nMISSION FAILED... \nEXITING MISSION";
 		return ' ';
 	}
-}			//mars mission
+}			
 char venus(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
 	cout << "\nA compound lays ahead which holds the bounty your after...";
