@@ -8,5 +8,6 @@ private:
 public:
 	int getSelfHealChance();
 	int getSelfHealAmount();
+	void healBoss(int);
 };
 

@@ -119,6 +119,7 @@ int mainMenu() {
 void introduction() {
 	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \na bounty hunter.";
 	cout << "\nflying through our solar system in an effort to chase bounty's to finally find the big bounty.";
+
 }		//intro to game
 char mars(playerType& player) {
 	cout << "\nYou landed safely and exit your ship...";
@@ -665,6 +666,7 @@ char saturn(playerType& player) {
 		return ' ';
 	}
 }
+//final mission, used classes in this mision to add some stuff
 void moon(playerType& player) {
 	player.saveGame();
 	cout << "\nYou landed safely and exit your ship...";
@@ -680,7 +682,7 @@ void moon(playerType& player) {
 		cout << "\nEnemey attacking...";
 		Sleep(1000);
 		if (getRandom(1, 100) <= grunt.getCritChance()) {
-			player.dealPlayerDamage(grunt.getcritDamage());
+			player.dealPlayerDamage(grunt.getcritDamage());			//crit damage system
 			cout << "\nCRIT ATTACK LANDED....";
 			Sleep(1000);
 		}
@@ -741,7 +743,7 @@ void moon(playerType& player) {
 		player.heal(100);
 	}
 	player.saveGame();
-	cout << "\nThis boss is much bigger than the bear however he's slower making his attacks rarely hit...";
+	cout << "\nThis boss is much harder and can self heal along with landing critical attacks...";
 	specialBoss boss;
 	while (boss.getHealth() > 0 || player.getHealth() > 0) {
 
@@ -802,6 +804,10 @@ void moon(playerType& player) {
 			Sleep(1000);
 			boss.dealDamage(150);
 			saveDog = 0;
+		}
+		if (getRandom(1, 100) < boss.getSelfHealChance()) {
+			cout << "\nBOSS SELF HEALS...";
+			boss.healBoss(boss.getSelfHealAmount());
 		}
 
 	}

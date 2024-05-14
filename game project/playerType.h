@@ -26,5 +26,6 @@ public:
 	void loadGame();
 	void setKeyWord();
 	std::string getKeyWord();
+	
 };
 
