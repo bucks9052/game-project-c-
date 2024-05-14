@@ -117,7 +117,7 @@ int mainMenu() {
 	return choice;
 }		//main menu system
 void introduction() {
-	cout << "In space, a lone ship cuts through the void. \nHis ship flying through space. \na bounty hunter.";
+	cout << "In space, spikes ship flys through space. \nA bounty hunter.";
 	cout << "\nflying through our solar system in an effort to chase bounty's to finally find the big bounty.";
 
 }		//intro to game
