@@ -76,9 +76,53 @@ int main() {
 			break;
 		}
 		case 2: {
-			cout << "\nWORK IN PROGRESS...";
+			cout << "\nDakota's shop\n1. 100$ 10 health\n2. 200$ 25 health\n3. 400$ 60 health\n 4. Exit";
+			int shopChoice = 0;
+			shopChoice = validateIntRange("\nEnter your choice: ", 1, 4);
+			switch (shopChoice) {
+			case 1: {
+				if (player.getCurrency() >= 100) {
+					player.removeMoney(100);
+					player.heal(10);
+					cout << "\nHEALED..\nHEALTH: " << player.getHealth();
+				}
+				else {
+					cout << "\nNOT ENOUGH MONEY....";
+				}
+				break;
+			}
+			case 2: {
+				if (player.getCurrency() >= 200) {
+					player.removeMoney(200);
+					player.heal(25);
+					cout << "\nHEALED..\nHEALTH: " << player.getHealth();
+				}
+				else {
+					cout << "\nNOT ENOUGH MONEY....";
+				}
+				break;
+			}
+			case 3: {
+				if (player.getCurrency() >= 400) {
+					player.removeMoney(400);
+					player.heal(60);
+					cout << "\nHEALED..\nHEALTH: " << player.getHealth();
+				}
+				else {
+					cout << "\nNOT ENOUGH MONEY....";
+				}
+				break;
+			}
+			case 4:{
+				cout << "\nExiting...";
+				break;
+			}
 
-			break;
+			
+
+
+			}
+			
 		}
 		case 3: {
 			player.saveGame();				//save system in a binary file
