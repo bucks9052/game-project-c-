@@ -30,6 +30,7 @@ int main() {
 		choice = mainMenu();
 		switch (choice) {
 		case 1: {
+			cin.clear();
 			int planetChoice = validateIntRange("\n1. MARS\n2. VENUS\n3. EARTH\n4. SATURN\n5. FINAL MISSION (unlocked by competing all other missions...\n6. Exit...)\nEnter your chocie: ", 1, 6);		//sub menu for planets
 			switch (planetChoice) {
 			case 1: {
@@ -37,6 +38,7 @@ int main() {
 				cout << "Flying to mars...";
 				Sleep(2000);
 				marsLetter = mars(player);
+				cin.clear();
 			}
 			case 2: {
 				system("cls");
