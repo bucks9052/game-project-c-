@@ -161,8 +161,8 @@ int mainMenu() {
 	return choice;
 }		//main menu system
 void introduction() {
-	cout << "In space, spikes ship flys through space. \nA bounty hunter.";
-	cout << "\nflying through our solar system in an effort to chase bounty's to finally find the big bounty.";
+
+	cout << "\nThis game is a just a simple attacking game with a shop system and other various intermediate c++ concepts";
 
 }		//intro to game
 char mars(playerType& player) {
