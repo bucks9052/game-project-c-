@@ -170,7 +170,7 @@ int mainMenu() {
 }		//main menu system
 void introduction() {
 
-	cout << "\nThis game is a just a simple attacking game with a shop system and other various intermediate c++ concepts";
+	cout << "\nYou are a bounty hunter going planet after plant to get to your final bounty";
 
 }		//intro to game
 char mars(playerType& player) {
