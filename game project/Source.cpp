@@ -39,24 +39,28 @@ int main() {
 				Sleep(2000);
 				marsLetter = mars(player);
 				cin.clear();
+				break;
 			}
 			case 2: {
 				system("cls");
 				cout << "Flying to venus...";
 				Sleep(2000);
 				venusLetter = venus(player);
+				break;
 			}
 			case 3: {
 				system("cls");
 				cout << "Flying to earth...";
 				Sleep(2000);
 				earthLetter = earth(player);
+				break;
 			}
 			case 4: {
 				system("cls");
 				cout << "Flying to saturn...";
 				Sleep(2000);
 				saturnLetter = earth(player);
+				break;
 			}
 			case 5: {
 				system("cls");
@@ -69,9 +73,11 @@ int main() {
 					moon(player);
 
 				}	
-				}
+				break;
+			}
 			case 6: {
 				cout << "\nExiting...";
+				break;
 			}
 			}
 			
